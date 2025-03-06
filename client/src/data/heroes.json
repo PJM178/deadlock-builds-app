@@ -1,0 +1,351 @@
+[
+  {
+    "id": 1,
+    "name": "Abrams",
+    "stats": {
+      "weapon": {
+        "dps": 54,
+        "bulletDamage": 4.05,
+        "ammo": 9,
+        "bulletsPerSecond": 1.67,
+        "lightMelee": 63,
+        "heavyMelee": 116
+      },
+      "vitality": {
+        "maxHealth": 570,
+        "healthRegen": 1.5,
+        "bulletResist": 0,
+        "spiritResist": 0,
+        "moveSpeed": 6.8,
+        "sprintSpeed": 1,
+        "stamina": 3
+      }
+    },
+    "abilities": {
+      "siphonLife": {
+        "fullName": "Siphon Life",
+        "description": "Drain health from enemies in front of you while they are in the radius.",
+        "scalable": true,
+        "heroStats": null,
+        "stats": {
+          "damage": {
+            "dps": true,
+            "value": 35,
+            "scaling": 0.6
+          },
+          "range": {
+            "value": 10,
+            "scaling": 0.05
+          },
+          "duration": {
+            "value": 4,
+            "scaling": 0
+          },
+          "cooldown": {
+            "value": 42,
+            "scaling": 0
+          }
+        },
+        "extraValues": [
+          {
+            "type": "health",
+            "scalable": false,
+            "value": 75,
+            "valueType": "percentage",
+            "text": "Heal vs Heroes"
+          },
+          {
+            "type": "health",
+            "scalable": false,
+            "value": 40,
+            "valueType": "percentage",
+            "text": "Heal vs Non-Heroes"
+          }
+        ],
+        "upgrades": {
+          "first": {
+            "cost": 1,
+            "stat": "cooldown",
+            "heroStat": null,
+            "value": -19,
+            "description": null
+          },
+          "second": {
+            "cost": 2,
+            "stat": "duration",
+            "heroStat": null,
+            "value": 2,
+            "description": null
+          },
+          "third": {
+            "cost": 5,
+            "stat": "damage",
+            "heroStat": null,
+            "value": 40,
+            "description": null
+          }
+        }
+      },
+      "shoulderCharge": {
+        "fullName": "Shoulder Charge",
+        "description": "<b>Charge forward</b>, colliding with enemies and dragging them along. Hitting a <b>wall</b> will <b>Stun</b> enemies caught by Abrams. Speed increased after colliding with enemy Heroes.",
+        "scalable": true,
+        "heroStats": null,
+        "stats": {
+          "damage": {
+            "dps": false,
+            "value": 40,
+            "scaling": 2.1
+          },
+          "range": null,
+          "duration": {
+            "value": 1.2,
+            "scaling": 0
+          },
+          "cooldown": {
+            "value": 37,
+            "scaling": 0
+          }
+        },
+        "extraValues": [
+          {
+            "type": "duration",
+            "subType": "stun",
+            "scalable": true,
+            "value": 0.85,
+            "valueType": "number"
+          }
+        ],
+        "upgrades": {
+          "first": {
+            "cost": 1,
+            "stat": "cooldown",
+            "heroStat": null,
+            "value": -19,
+            "description": null
+          },
+          "second": {
+            "cost": 2,
+            "stat": "duration",
+            "heroStat": null,
+            "value": 0.5,
+            "description": null
+          },
+          "third": {
+            "cost": 5,
+            "stat": null,
+            "heroStat": null,
+            "value": null,
+            "description": "+5.5 Weapon Damage for 8s after colliding with an enemy"
+          }
+        }
+      },
+      "infernalResilience": {
+        "fullName": "Infernal Resilience",
+        "scalable": false,
+        "heroStats": {
+          "healthRegen": 1
+        },
+        "stats": null,
+        "extraValues": [
+          {
+            "type": "health",
+            "scalable": false,
+            "value": 12,
+            "valueType": "percentage",
+            "text": "Damage regenerated"
+          },
+          {
+            "type": "duration",
+            "scalable": false,
+            "value": 20,
+            "valueType": "seconds",
+            "text": "Regeneration Time"
+          }
+        ],
+        "upgrades": {
+          "first": {
+            "cost": 1,
+            "stat": "healthRegen",
+            "heroStat": {
+              "healthRegen": 1.5
+            },
+            "value": 0
+          },
+          "second": {
+            "cost": 2,
+            "stat": "health",
+            "heroStat": {
+              "health": 150
+            },
+            "value": 0
+          },
+          "third": {
+            "cost": 5,
+            "stat": null,
+            "heroStat": null,
+            "extraValue": {
+              "index": 0
+            },
+            "valueType": "percentage",
+            "value": 6,
+            "description": "Damage regenerated"
+          }
+        }
+      },
+      "seismicImpact": {
+        "fullName": "Seismic Impact",
+        "scalable": true,
+        "stats": {
+          "damage": {
+            "dps": false,
+            "value": 150,
+            "scaling": 0.9
+          },
+          "range": null,
+          "duration": null,
+          "cooldown": {
+            "value": 121,
+            "scaling": 0
+          }
+        },
+        "extraValues": [
+          {
+            "type": "duration",
+            "subType": "stun",
+            "scalable": true,
+            "value": 1,
+            "valueType": "number"
+          },
+          {
+            "type": "range",
+            "scalable": true,
+            "value": 9,
+            "valueType": "number",
+            "text": "Impact Radius"
+          }
+        ],
+        "upgrades": {
+          "first": {
+            "cost": 1,
+            "stat": "cooldown",
+            "heroStat": null,
+            "value": -38
+          },
+          "second": {
+            "cost": 2,
+            "stat": null,
+            "heroStat": null,
+            "description": "Gain 100 Max HP and 15% Fire Rate per hero hit. Lasts 25s."
+          },
+          "third": {
+            "cost": 5,
+            "stat": null,
+            "heroStat": null,
+            "description": "On cast, become <b>Immune</b> to <b>Stun</b>, <b>Silence</b>, <b>Sleep</b>, <b>Root</b>, <b>and Disarm</b>. Expires 3s after landing."
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "Bebop"
+  },
+  {
+    "id": 3,
+    "name": "Calico"
+  },
+  {
+    "id": 4,
+    "name": "Dynamo"
+  },
+  {
+    "id": 5,
+    "name": "Grey Talon"
+  },
+  {
+    "id": 6,
+    "name": "Haze"
+  },
+  {
+    "id": 7,
+    "name": "Holliday"
+  },
+  {
+    "id": 8,
+    "name": "Infernus"
+  },
+  {
+    "id": 9,
+    "name": "Ivy"
+  },
+  {
+    "id": 10,
+    "name": "Kelvin"
+  },
+  {
+    "id": 11,
+    "name": "Lady Geist"
+  },
+  {
+    "id": 12,
+    "name": "Lash"
+  },
+  {
+    "id": 13,
+    "name": "Magician"
+  },
+  {
+    "id": 14,
+    "name": "McGinnis"
+  },
+  {
+    "id": 15,
+    "name": "Mirage"
+  },
+  {
+    "id": 16,
+    "name": "Mo & Krill"
+  },
+  {
+    "id": 17,
+    "name": "Paradox"
+  },
+  {
+    "id": 18,
+    "name": "Pocket"
+  },
+  {
+    "id": 19,
+    "name": "Seven"
+  },
+  {
+    "id": 20,
+    "name": "Shiv"
+  },
+  {
+    "id": 21,
+    "name": "Vindicta"
+  },
+  {
+    "id": 22,
+    "name": "Viscous"
+  },
+  {
+    "id": 23,
+    "name": "Vyper"
+  },
+  {
+    "id": 24,
+    "name": "Warden"
+  },
+  {
+    "id": 25,
+    "name": "Wraith"
+  },
+  {
+    "id": 26,
+    "name": "Yamato"
+  }
+]

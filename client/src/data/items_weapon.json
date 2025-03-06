@@ -1,0 +1,154 @@
+[
+  {
+    "tier": 1,
+    "cost": 500,
+    "items": [
+      {
+        "name": "Basic Magazine",
+        "isActive": false,
+        "componentOf": "Titanic Magazine",
+        "stats": {
+          "ammo": 26,
+          "weaponDamage": 12
+        },
+        "passive": null
+      },
+      {
+        "name": "Close Quarters",
+        "isActive": false,
+        "componentOf": null,
+        "stats": {
+          "bulletResist": 4,
+          "weaponDamage": 12
+        },
+        "passive": {
+          "stats": {
+            "weaponDamage": {
+              "conditional": true,
+              "value": 22
+            }
+          },
+          "condition": {
+            "type": "range",
+            "value": 15,
+            "description": "Close Range"
+          }
+        }
+      },
+      {
+        "name": "Headshot Booster",
+        "isActive": false,
+        "componentOf": "Headhunter",
+        "stats": {
+          "fireRate": 4,
+          "bulletShield": 40
+        },
+        "passive": {
+          "stats": {
+            "genericValue": {
+              "conditional": false,
+              "value": 40,
+              "description": "Head Shot Bonus Damage"
+            }
+          }
+        }
+      },
+      {
+        "name": "High-Velocity Mag",
+        "isActive": false,
+        "componentOf": "Pristine Emblem",
+        "stats": {
+          "bulletVelocity": 20,
+          "weaponDamage": 12,
+          "bulletShieldHealth": 65
+        },
+        "passive": null
+      },
+      {
+        "name": "Hollow Point Ward",
+        "isActive": false,
+        "componentOf": null,
+        "stats": {
+          "spiritShieldHealth": 95,
+          "spiritPower": 4
+        },
+        "passive": {
+          "description": "When you are <b>above 65% health</b>, deal additional <b>Weapon Damage</b>.",
+          "stats": {
+            "weaponDamage": {
+              "conditional": true,
+              "value": 20
+            }
+          }
+        }
+      },
+      {
+        "name": "Monster Rounds",
+        "isActive": false,
+        "componentOf": null,
+        "stats": {
+          "weaponDamageVsNPCs": 26,
+          "bulletResistVsNPCS": 25,
+          "bonusHealth": 30,
+          "healthRegen": 1
+        },
+        "passive": null
+      },
+      {
+        "name": "Rapid Rounds",
+        "isActive": false,
+        "componentOf": null,
+        "stats": {
+          "fireRate": 10,
+          "sprintSpeed": 1
+        },
+        "passive": null
+      },
+      {
+        "name": "Restorative Shot",
+        "isActive": false,
+        "componentOf": null,
+        "stats": {
+          "bulletShieldHealth": 100
+        },
+        "passive": {
+          "description": "Your next bullet will <b>heal</b> you based on what target you hit.",
+          "cooldown": 9,
+          "stats": {
+            "custom": [
+              {
+                "value": 40,
+                "type": "health",
+                "text": "Healing From Heroes"
+              },
+              {
+                "value": 15,
+                "type": "health",
+                "text": "Healing From NPCs / Orbs"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "tier": 2,
+    "cost": 1250,
+    "items": []
+  },
+  {
+    "tier": 3,
+    "cost": 3000,
+    "items": [
+      {}
+    ]
+  },
+  {
+    "tier": 4,
+    "cost": 6000,
+    "items": [
+      {}
+    ]
+  }
+]

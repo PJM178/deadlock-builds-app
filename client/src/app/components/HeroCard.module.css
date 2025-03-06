@@ -1,0 +1,36 @@
+.portrait-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  border: solid 2px transparent;
+  overflow: hidden;
+  transition: transform 150ms linear;
+}
+
+.portrait-container:hover {
+  transform: scale(1.1);
+}
+
+.portrait-image {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+
+.portrait-image:hover {
+  cursor: pointer;
+}
+
+.portrait-name {
+  position: absolute;
+  bottom: 10%;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  text-align: center;
+}
