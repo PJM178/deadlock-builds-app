@@ -1,0 +1,1 @@
+This will be a Valve game Deadlock hero build maker. Feature list planned: accounts, saving builds to db. Next.js client and likely Spring server.
