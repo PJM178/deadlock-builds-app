@@ -1,10 +1,10 @@
 import styles from "./items.module.css";
-import { TabProps } from "./items.types";
+import { ItemCategories, TabProps } from "./items.types";
 import heroes from "../../data/heroes.json";
 import itemsWeapon from "../../data/items_weapon.json";
 import Image from "next/image";
-
-type ItemCategories = "weapon" | "vitality" | "spirit" | undefined;
+import ItemTier from "./components/ItemTier";
+import ItemCard from "./components/ItemCard";
 
 const Tab = (props: TabProps) => {
   const { name, searchParam } = props;
@@ -27,20 +27,18 @@ const ItemsHome = async ({ searchParams }: ItemProps) => {
       <Tab name="Weapon" searchParam={itemCategory && isSearchParamItem ? itemCategory : "weapon"} />
       <Tab name="Vitality" searchParam={itemCategory} />
       <Tab name="Spirit" searchParam={itemCategory} />
-      {itemCategory && isSearchParamItem &&
-        itemsWeapon[0].items.map((item) => (
-          <div key={item.name}>
-            <Image
-              className={styles["portrait-image"]}
-              src={`/items/${itemCategory}/${(item.name as string).replace(/[^a-zA-Z0-9]/g, "_")}.webp`}
-              width={100}
-              height={100}
-              alt={item.name}
-            />
-            <span>{item.name}</span>
-          </div>
-        ))
-      }
+      {itemsWeapon.map((tier) => (
+        <ItemTier key={tier.tier} cost={tier.cost} tier={tier.tier} category={(itemCategory as ItemCategories) ?? "weapon"}>
+          {itemCategory && isSearchParamItem ?
+            (tier.items as { name: string }[]).map((item, index) => (
+              <ItemCard key={item.name ?? index} name={(item.name as string) ?? ""} category={(itemCategory as ItemCategories) ?? "weapon"} />
+            )) :
+            (tier.items as { name: string }[]).map((item, index) => (
+              <ItemCard key={item.name ?? index} name={(item.name as string) ?? ""} category={(itemCategory as ItemCategories) ?? "weapon"} />
+            ))
+          }
+        </ItemTier>
+      ))}
     </div>
   );
 };
