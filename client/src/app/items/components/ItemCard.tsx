@@ -12,14 +12,18 @@ const ItemCard = (props: ItemCardProps) => {
 
   return (
     <div className={styles["item-card-container"]}>
-      <Image
-        className={styles["portrait-image"]}
-        src={`/items/${category}/${(name).replace(/[^a-zA-Z0-9]/g, "_")}.webp`}
-        width={100}
-        height={100}
-        alt={name}
-      />
-      <span>{name}</span>
+      <div className={styles["item-card-image--container"]}>
+        <Image
+          className={styles["item-card-image--image"]}
+          src={`/items/${category}/${(name).replace(/[^a-zA-Z0-9]/g, "_")}.webp`}
+          width={50}
+          height={50}
+          alt={name}
+        />
+      </div>
+      <div className={styles["item-card-name--container"]}>
+        <span className={styles["item-card-name--text"]}>{name}</span>
+      </div>
     </div>
   );
 };
