@@ -1,0 +1,472 @@
+[
+  {
+    "category": "weapon",
+    "data": [
+      {
+        "tier": 1,
+        "cost": 500,
+        "innate": 6,
+        "items": [
+          {
+            "name": "Basic Magazine",
+            "isActive": false,
+            "componentOf": "Titanic Magazine",
+            "stats": {
+              "ammo": 26,
+              "weaponDamage": 12
+            },
+            "passive": null
+          },
+          {
+            "name": "Close Quarters",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "bulletResist": 4,
+              "weaponDamage": 12
+            },
+            "passive": {
+              "stats": {
+                "weaponDamage": {
+                  "conditional": true,
+                  "value": 22
+                }
+              },
+              "condition": {
+                "type": "range",
+                "value": 15,
+                "description": "Close Range"
+              }
+            }
+          },
+          {
+            "name": "Headshot Booster",
+            "isActive": false,
+            "componentOf": "Headhunter",
+            "stats": {
+              "fireRate": 4,
+              "bulletShield": 40
+            },
+            "passive": {
+              "stats": {
+                "genericValue": {
+                  "conditional": false,
+                  "value": 40,
+                  "description": "Head Shot Bonus Damage"
+                }
+              }
+            }
+          },
+          {
+            "name": "High-Velocity Mag",
+            "isActive": false,
+            "componentOf": "Pristine Emblem",
+            "stats": {
+              "bulletVelocity": 20,
+              "weaponDamage": 12,
+              "bulletShieldHealth": 65
+            },
+            "passive": null
+          },
+          {
+            "name": "Hollow Point Ward",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "spiritShieldHealth": 95,
+              "spiritPower": 4
+            },
+            "passive": {
+              "description": "When you are <b>above 65% health</b>, deal additional <b>Weapon Damage</b>.",
+              "stats": {
+                "weaponDamage": {
+                  "conditional": true,
+                  "value": 20
+                }
+              }
+            }
+          },
+          {
+            "name": "Monster Rounds",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "weaponDamageVsNPCs": 26,
+              "bulletResistVsNPCS": 25,
+              "bonusHealth": 30,
+              "healthRegen": 1
+            },
+            "passive": null
+          },
+          {
+            "name": "Rapid Rounds",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "fireRate": 10,
+              "sprintSpeed": 1
+            },
+            "passive": null
+          },
+          {
+            "name": "Restorative Shot",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "bulletShieldHealth": 100
+            },
+            "passive": {
+              "description": "Your next bullet will <b>heal</b> you based on what target you hit.",
+              "cooldown": 9,
+              "stats": {
+                "custom": [
+                  {
+                    "value": 40,
+                    "type": "health",
+                    "text": "Healing From Heroes"
+                  },
+                  {
+                    "value": 15,
+                    "type": "health",
+                    "text": "Healing From NPCs / Orbs"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "tier": 2,
+        "cost": 1250,
+        "innate": 10,
+        "items": [
+          {}
+        ]
+      },
+      {
+        "tier": 3,
+        "cost": 3000,
+        "innate": 14,
+        "items": [
+          {}
+        ]
+      },
+      {
+        "tier": 4,
+        "cost": 6000,
+        "innate": 18,
+        "items": [
+          {}
+        ]
+      }
+    ]
+  },
+  {
+    "category": "vitality",
+    "data": [
+      {
+        "tier": 1,
+        "cost": 500,
+        "innate": 11,
+        "items": [
+          {
+            "name": "Enduring Spirit",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "spiritLifesteal": 10,
+              "bonusHealth": 75,
+              "spiritPower": 4
+            },
+            "passive": null
+          },
+          {
+            "name": "Extra Health",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "bonusHealth": 160,
+              "weaponDamage": 7
+            },
+            "passive": null
+          },
+          {
+            "name": "Extra Regen",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "healthRegen": 3,
+              "ammo": 10
+            },
+            "passive": null
+          },
+          {
+            "name": "Extra Stamina",
+            "isActive": false,
+            "componentOf": "Superior Stamina",
+            "stats": {
+              "stamina": 1,
+              "staminRecovery": 16,
+              "bonusHealth": 35
+            },
+            "passive": null
+          },
+          {
+            "name": "Healing Rite",
+            "isActive": true,
+            "componentOf": "Healing Nova",
+            "stats": {
+              "bonusHealth": 30,
+              "spiritPower": 3
+            },
+            "passive": null,
+            "active": {
+              "cooldown": 64,
+              "description": "Grant <b>Regen</b> and <b>Sprint Speed</b> to the target. Gets dispelled if you take damage from enemy players or objectives. Can be self-cast.",
+              "stats": {
+                "custom": [
+                  {
+                    "value": 40,
+                    "type": "health",
+                    "text": "Total HP Regen"
+                  }
+                ],
+                "sprintSpeed": {
+                  "value": 2,
+                  "conditional": true
+                }
+              }
+            }
+          },
+          {
+            "name": "Melee Lifesteal",
+            "isActive": false,
+            "componentOf": "Lifestrike",
+            "stats": {
+              "meleeDamage": 12,
+              "bonusHealth": 75,
+              "bulletResist": 3
+            },
+            "passive": {
+              "description": "Your <b>Melee</b> attacks <b>heal you</b> for 18% of the <b>Melee Damage</b> dealth plus 90. This heal is 30% effective vs non-heroes.",
+              "cooldown": 7.5
+            }
+          },
+          {
+            "name": "Sprint Boots",
+            "isActive": false,
+            "componentOf": "Enduring Speed",
+            "stats": {
+              "sprintSpeed": 1.5,
+              "healthRegen": 1,
+              "weaponDamage": 4
+            },
+            "passive": null
+          }
+        ]
+      },
+      {
+        "tier": 2,
+        "cost": 1250,
+        "innate": 14,
+        "items": [
+          {}
+        ]
+      },
+      {
+        "tier": 3,
+        "cost": 3000,
+        "innate": 17,
+        "items": [
+          {}
+        ]
+      },
+      {
+        "tier": 4,
+        "cost": 6000,
+        "innate": 20,
+        "items": [
+          {}
+        ]
+      }
+    ]
+  },
+  {
+    "category": "spirit",
+    "data": [
+      {
+        "tier": 1,
+        "cost": 500,
+        "innate": 4,
+        "items": [
+          {
+            "name": "Ammo Scavenger",
+            "isActive": false,
+            "componentOf": null,
+            "stats": {
+              "ammo": 10
+            },
+            "passive": {
+              "description": "Any time you secure or deny a Soul from an entity you <b>get ammo back</b> and gain stacking <b>Spirit Power</b>. At Max Stacks, gain bonus Sprint speed.",
+              "cooldown": null,
+              "stats": [
+                {
+                  "value": 2,
+                  "text": "Ammo Per Soul"
+                },
+                {
+                  "value": 1,
+                  "type": "spirit",
+                  "text": "Spirit Power Per Soul",
+                  "conditional": true
+                },
+                {
+                  "value": 2,
+                  "stat": "Sprint Speed",
+                  "duration": 45,
+                  "extraStats": [
+                    {
+                      "value": 18,
+                      "text": "Max Stacks"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "name": "Extra Charge",
+            "isActive": false,
+            "componentOf": "Rapid Recharge",
+            "stats": {
+              "bonusAbilityCharge": 1,
+              "chargeCooldown": 10,
+              "weaponDamage": 6
+            },
+            "passive": null
+          },
+          {
+            "name": "Extra Spirit",
+            "isActive": false,
+            "componentOf": "Improved Spirit",
+            "stats": {
+              "spiritPower": 10,
+              "healthRegen": 1,
+              "bonusHealth": 35
+            },
+            "passive": null
+          },
+          {
+            "name": "Infuser",
+            "isActive": true,
+            "componentOf": null,
+            "stats": {
+              "spiritShieldHealth": 70,
+              "ammo": 10
+            },
+            "passive": null,
+            "active": {
+              "cooldown": 32,
+              "description": "Gain <b>Spirit Power</b> and <b>Spirit Lifesteal</b>.",
+              "stats": [
+                {
+                  "value": 16,
+                  "type": "spirit",
+                  "text": "Spirit Power",
+                  "conditional": true
+                },
+                {
+                  "value": 20,
+                  "type": "health",
+                  "text": "Spirit Lifesteal",
+                  "conditional": true
+                  
+                },
+                {
+                  "duration": 8
+                }
+              ]
+            }
+          },
+          {
+            "name": "Mystic Burst",
+            "isActive": false,
+            "componentOf": "Improved Burst",
+            "stats": {
+              "spiritShieldHealth": 40,
+              "weaponDamage": 6
+            },
+            "passive": {
+              "description": "Abilities deal bonus <b>Spirit Damage</b> if they deal 80 damage or more in a single hit.",
+              "cooldown": 6.25,
+              "stats": [
+                {
+                  "value": 35,
+                  "type": "spirit",
+                  "text": "Bonus Damage"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Mystic Reach",
+            "isActive": false,
+            "description": "Increases the <b>range</b> and <b>effect radius</b> of your abilities and items.",
+            "componentOf": "Improved Reach",
+            "stats": {
+              "abilityRange": 15,
+              "bulletResist": 7
+            },
+            "passive": null
+          },
+          {
+            "name": "Spirit Strike",
+            "isActive": false,
+            "componentOf": "Spirit Snatch",
+            "stats": {
+              "abilityRange": 15,
+              "bulletResist": 7
+            },
+            "passive": {
+              "description": "When you perform a <b>Light or Heavy Melee</b> attack against a hero, deal extra <b>Spirit Damage</b> with the attack and reduce the target's <b>Spirit Resist</b>.",
+              "cooldown": 8.5,
+              "stats": [
+                {
+                  "value": 52,
+                  "type": "spirit",
+                  "text": "Spirit Damage",
+                  "scaling": 0.42
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "tier": 2,
+        "cost": 1250,
+        "innate": 8,
+        "items": [
+          {}
+        ]
+      },
+      {
+        "tier": 3,
+        "cost": 3000,
+        "innate": 12,
+        "items": [
+          {}
+        ]
+      },
+      {
+        "tier": 4,
+        "cost": 6000,
+        "innate": 16,
+        "items": [
+          {}
+        ]
+      }
+    ]
+  }
+]

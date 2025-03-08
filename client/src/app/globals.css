@@ -1,6 +1,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --weapon-background-color: orange;
+  --vitality-background-color: green;
+  --spirit-background-color: purple;
 }
 
 @media (prefers-color-scheme: dark) {

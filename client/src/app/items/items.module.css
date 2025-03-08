@@ -1,3 +1,23 @@
 .active {
   color: red;
 }
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.tab-content--container {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.tab-container {
+  padding: 0.75rem 1.25rem;
+}
