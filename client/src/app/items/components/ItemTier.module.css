@@ -39,6 +39,7 @@
   /* padding: 1rem; */
   transform: rotate(270deg);
   width: 4rem;
+  z-index: -1;
 }
 
 .souls-icon {

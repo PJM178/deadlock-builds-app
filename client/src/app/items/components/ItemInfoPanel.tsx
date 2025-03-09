@@ -11,38 +11,43 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
 
   return (
     <div className={styles["container"]}>
-      <div className={styles["item-info-tab"]}>
-        <div className={styles["basic-info--container"]}>
-          <div className={styles["basic-info--name"]}>
-            <span>{name}</span>
+      <div className={`${styles["container--general"]} ${styles["container--item"]}`}>
+        <div className={styles["item-info-tab"]}>
+          <div className={styles["basic-info--container"]}>
+            <div className={styles["basic-info--name"]}>
+              <span>{name}</span>
 
-            <span className={styles["basic-info--name-cost"]}>
-              <Image
-                className={styles["souls-icon"]}
-                src={"/miscellaneous/icon_soul.svg"}
-                alt="souls"
-                width={20}
-                height={20}
-              />
-              {cost}
-            </span>
+              <span className={styles["basic-info--name-cost"]}>
+                <Image
+                  className={styles["souls-icon"]}
+                  src={"/miscellaneous/icon_soul.svg"}
+                  alt="souls"
+                  width={20}
+                  height={20}
+                />
+                {cost}
+              </span>
 
-          </div>
-          <div className={styles["basic-info--stats"]}>
-            <div>
-              basic stat bonus
             </div>
-            <div>
-              basic bonus type
+            <div className={styles["basic-info--stats"]}>
+              <div>
+                basic stat bonus
+              </div>
+              <div>
+                basic bonus type
+              </div>
             </div>
           </div>
         </div>
+        <div className={styles["item-info-tab"]}>
+          basic stats
+        </div>
+        <div className={styles["item-info-tab"]}>
+          is component of
+        </div>
       </div>
-      <div className={styles["item-info-tab"]}>
-        basic stats
-      </div>
-      <div className={styles["item-info-tab"]}>
-        is component of
+      <div className={`${styles["container--general"]} ${styles["container--modifies"]}`}>
+        Modifies stats
       </div>
     </div>
   );

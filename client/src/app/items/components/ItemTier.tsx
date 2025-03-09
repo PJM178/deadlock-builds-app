@@ -13,7 +13,7 @@ interface ItemTierProps {
 const ItemTier = (props: ItemTierProps) => {
   const { children, tier, cost, category } = props;
   const isOdd = (tier + 1) % 2 !== 0;
-  console.log((tier + 1) % 2 )
+
   return (
     <div className={`${styles["tier-container"]} ${isOdd ? styles["even-tier-container"] : ""}`.trim()} style={{ backgroundColor: `var(--${category}-background-color)` }}>
       <div className={styles["souls-container"]}>

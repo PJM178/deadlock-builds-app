@@ -16,9 +16,9 @@ interface ItemCardProps {
 const ItemCard = (props: ItemCardProps) => {
   const { name, category, tier } = props;
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  console.log(tier, name)
-  const handlePopoverOpen = (e: React.MouseEvent<HTMLDivElement>) => {
-    setAnchorEl(e.currentTarget);
+
+  const handlePopoverOpen = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(!anchorEl ? e.currentTarget : null);
   };
 
   const handlePopoverClose = () => {
@@ -31,6 +31,10 @@ const ItemCard = (props: ItemCardProps) => {
         className={styles["item-card-container"]}
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
+        onClick={handlePopoverOpen}
+        onBlur={handlePopoverClose}
+        aria-haspopup="true"
+        role="button"
         tabIndex={0}
       >
         <div
@@ -56,6 +60,7 @@ const ItemCard = (props: ItemCardProps) => {
           top: 0,
           left: 20,
         }}
+        position="center"
       >
         <ItemInfoPanel name={name} cost={500} />
       </Popover>
