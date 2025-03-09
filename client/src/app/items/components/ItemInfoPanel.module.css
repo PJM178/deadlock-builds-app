@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  width: fit-content;
+  background-color: orangered;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.basic-info--container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-info-tab {
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+.basic-info--name {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.basic-info--name-cost {
+  display: inline-flex;
+  align-items: center;
+}
+
+.basic-info--stats {
+  display: inline-flex;
+  flex-direction: column;
+}
