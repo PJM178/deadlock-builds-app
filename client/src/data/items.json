@@ -26,17 +26,26 @@
               "weaponDamage": 12
             },
             "passive": {
-              "stats": {
-                "weaponDamage": {
-                  "conditional": true,
-                  "value": 22
+              "description": "Deal additional <b>Weapon Damage</b> when in <b>close range</b> to your target.",
+              "cooldown": null,
+              "stats": [
+                {
+                  "value": 22,
+                  "valueType": "percentage",
+                  "type": "weapon",
+                  "text": "Weapon Damage",
+                  "scaling": 0,
+                  "conditional": true
+                },
+                {
+                  "value": 15,
+                  "valueType": "meters",
+                  "type": null,
+                  "text": "Close Range",
+                  "scaling": 0,
+                  "conditional": false
                 }
-              },
-              "condition": {
-                "type": "range",
-                "value": 15,
-                "description": "Close Range"
-              }
+              ]
             }
           },
           {
@@ -381,7 +390,6 @@
                   "type": "health",
                   "text": "Spirit Lifesteal",
                   "conditional": true
-                  
                 },
                 {
                   "duration": 8

@@ -1,13 +1,36 @@
 import Image from "next/image";
 import styles from "./ItemInfoPanel.module.css"
 
+interface Stats {
+  value: number;
+  type: string;
+}
+
+interface Passive {
+  description: string;
+  cooldown: number | null;
+  stats: null
+}
+
+interface Active {
+  description: string;
+  cooldown: number | null;
+  stats: null
+}
+
 interface ItemInfoPanelProps {
   name: string;
   cost: number;
+  stats: Record<string, number>;
+  passive: Passive | null;
+  active: Active | null;
+  isComponentOf: string;
+  displayModifiesPanel?: boolean;
 }
 
 const ItemInfoPanel = (props: ItemInfoPanelProps) => {
-  const { name, cost } = props;
+  const { name, cost, displayModifiesPanel } = props;
+  const string = "Deal additional <b>Weapon Damage</b> when in <b>close range</b> to your target.<br />\n <i>JORMAA</i>"
 
   return (
     <div className={styles["container"]}>
@@ -16,7 +39,6 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
           <div className={styles["basic-info--container"]}>
             <div className={styles["basic-info--name"]}>
               <span>{name}</span>
-
               <span className={styles["basic-info--name-cost"]}>
                 <Image
                   className={styles["souls-icon"]}
@@ -40,15 +62,28 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
           </div>
         </div>
         <div className={styles["item-info-tab"]}>
-          basic stats
+          {/* <span>{parseHTMLToJSX(string)}</span> */}
+          passive
+        </div>
+        <div className={styles["item-info-tab"]}>
+          active
+          <span dangerouslySetInnerHTML={{
+            __html: string,
+          }} />
+          {/* <span>{parseHTMLToJSX(string)}</span>
+          <span>{parseHTMLToJSX(string)}</span>
+          <span>{parseHTMLToJSX(string)}</span>
+          <span>{parseHTMLToJSX(string)}</span>
+          <span>{parseHTMLToJSX(string)}</span>
+          <span>{parseHTMLToJSX(string)}</span> */}
         </div>
         <div className={styles["item-info-tab"]}>
           is component of
         </div>
       </div>
-      <div className={`${styles["container--general"]} ${styles["container--modifies"]}`}>
+      {displayModifiesPanel && <div className={`${styles["container--general"]} ${styles["container--modifies"]}`}>
         Modifies stats
-      </div>
+      </div>}
     </div>
   );
 };

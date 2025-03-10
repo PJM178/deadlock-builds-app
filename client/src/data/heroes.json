@@ -18,7 +18,15 @@
         "spiritResist": 0,
         "moveSpeed": 6.8,
         "sprintSpeed": 1,
-        "stamina": 3
+        "stamina": 3,
+        "spiritShieldHealth": 0,
+        "bulletShieldHealth": 0
+      },
+      "spirit": {
+        "spiritPower": 0,
+        "abilityRange": 0,
+        "cooldownReduction": 0,
+        "abilityDuration": 0
       }
     },
     "abilities": {

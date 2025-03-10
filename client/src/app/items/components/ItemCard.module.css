@@ -6,6 +6,12 @@
   height: 125px;
   border-radius: 5px;
   overflow: hidden;
+  transition: transform 75ms linear;
+}
+
+.item-card-container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .item-card-image--container {
