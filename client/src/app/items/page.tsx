@@ -1,10 +1,10 @@
 import styles from "./items.module.css";
 import { ItemCategories, ItemProps, TabProps, TabsContainerProps } from "./items.types";
 import items from "../../data/items.json"
-// import Image from "next/image";
 import ItemTier from "./components/ItemTier";
 import ItemCard from "./components/ItemCard";
 import Link from "next/link";
+import { Item } from "@/types/items";
 
 const Tab = (props: TabProps) => {
   const { name, searchParam, icon } = props;
@@ -81,9 +81,17 @@ const ItemsHome = async ({ searchParams }: ItemProps) => {
               category.data.map((tier) => {
                 return (
                   <ItemTier key={tier.tier} cost={tier.cost} tier={tier.tier} category={"weapon"}>
-                    {(tier.items as { name: string }[]).map((item, index) => (
-                      <ItemCard key={item.name ?? index} tier={tier.tier} name={(item.name as string) ?? ""} category={(category.category as ItemCategories)} />
-                    ))}
+                    {(tier.items as Item[]).map((item, index) => {
+                      return (
+                        <ItemCard
+                          key={item.name ?? index}
+                          itemData={item as Item}
+                          category={(category.category as ItemCategories)}
+                          innate={tier.innate}
+                          cost={tier.cost}
+                        />
+                      );
+                    })}
                   </ItemTier>
                 );
               })
@@ -94,11 +102,19 @@ const ItemsHome = async ({ searchParams }: ItemProps) => {
             return (
               category.data.map((tier) => {
                 return (
-                  <ItemTier key={tier.tier} cost={tier.cost} tier={tier.tier} category={(itemCategory as ItemCategories)}>
-                    {(tier.items as { name: string }[]).map((item, index) => (
-                      <ItemCard key={item.name ?? index} tier={tier.tier} name={(item.name as string) ?? ""} category={(category.category as ItemCategories)} />
-                    ))}
-                  </ItemTier>
+                  <ItemTier key={tier.tier} cost={tier.cost} tier={tier.tier} category={itemCategory}>
+                  {(tier.items as Item[]).map((item, index) => {
+                    return (
+                      <ItemCard
+                        key={item.name ?? index}
+                        itemData={item as Item}
+                        category={(category.category as ItemCategories)}
+                        innate={tier.innate}
+                        cost={tier.cost}
+                      />
+                    );
+                  })}
+                </ItemTier>
                 );
               })
             );
@@ -108,11 +124,19 @@ const ItemsHome = async ({ searchParams }: ItemProps) => {
             return (
               category.data.map((tier) => {
                 return (
-                  <ItemTier key={tier.tier} cost={tier.cost} tier={tier.tier} category={(itemCategory as ItemCategories)}>
-                    {(tier.items as { name: string }[]).map((item, index) => (
-                      <ItemCard key={item.name ?? index} tier={tier.tier} name={(item.name as string) ?? ""} category={(category.category as ItemCategories)} />
-                    ))}
-                  </ItemTier>
+                  <ItemTier key={tier.tier} cost={tier.cost} tier={tier.tier} category={itemCategory}>
+                  {(tier.items as Item[]).map((item, index) => {
+                    return (
+                      <ItemCard
+                        key={item.name ?? index}
+                        itemData={item as Item}
+                        category={(category.category as ItemCategories)}
+                        innate={tier.innate}
+                        cost={tier.cost}
+                      />
+                    );
+                  })}
+                </ItemTier>
                 );
               })
             );

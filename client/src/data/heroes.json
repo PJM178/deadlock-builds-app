@@ -4,10 +4,18 @@
     "name": "Abrams",
     "stats": {
       "weapon": {
-        "dps": 54,
         "bulletDamage": 4.05,
+        "weaponDamage": 0,
+        "bulletsPerSec": 1.67,
+        "fireRate": 0,
         "ammo": 9,
-        "bulletsPerSecond": 1.67,
+        "clipSizeIncrease": 0,
+        "reloadTime": 0,
+        "reloadReduction": 0,
+        "bulletVelocity": 0,
+        "bulletVelocityIncrease": 0,
+        "bulletLifesteal": 0,
+        "critBonusScale": 0,
         "lightMelee": 63,
         "heavyMelee": 116
       },
@@ -16,17 +24,26 @@
         "healthRegen": 1.5,
         "bulletResist": 0,
         "spiritResist": 0,
+        "bulletShield": 0,
+        "spiritShield": 0,
+        "meleeResist": 0,
+        "healAmp": 0,
+        "debuffResist": 0,
+        "critReduction": 0,
         "moveSpeed": 6.8,
         "sprintSpeed": 1,
-        "stamina": 3,
-        "spiritShieldHealth": 0,
-        "bulletShieldHealth": 0
+        "staminaCooldown": 0,
+        "staminaRecovery": 0,
+        "stamina": 3
       },
       "spirit": {
-        "spiritPower": 0,
+        "abilityCooldown": 0,
+        "abilityDuration": 0,
         "abilityRange": 0,
-        "cooldownReduction": 0,
-        "abilityDuration": 0
+        "spiritLifesteal": 0,
+        "maxChargesIncrease": 0,
+        "chargeCooldown": 0,
+        "spiritPower": 0
       }
     },
     "abilities": {
