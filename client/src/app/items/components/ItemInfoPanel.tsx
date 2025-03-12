@@ -3,6 +3,7 @@ import styles from "./ItemInfoPanel.module.css"
 import { Item, StatKeys } from "@/types/items";
 import { ItemCategories } from "../items.types";
 import { joinAndCapitalizeArrayOfString, splitCamelCase } from "@/app/utility/utility";
+import TestFetchData from "./TestFetchData";
 
 interface ItemInfoPanelProps {
   itemData: Item;
@@ -25,6 +26,7 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
 
   return (
     <div className={styles["container"]}>
+      <TestFetchData />
       <div className={`${styles["container--general"]} ${styles["container--item"]}`}>
         <div className={styles["item-info-tab"]}>
           <div className={styles["basic-info--container"]}>
