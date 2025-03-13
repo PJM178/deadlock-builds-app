@@ -1,3 +1,4 @@
+import React from "react";
 import { createPortal } from "react-dom";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 
@@ -49,6 +50,7 @@ const Popover = (props: PopoverProps) => {
     <>
       {createPortal(
         <div
+          data-testid="popover"
           ref={popoverRef}
           style={{ ...(popoverStyles || {}), visibility: !popoverStyles ? "hidden" : "visible" }}
         >

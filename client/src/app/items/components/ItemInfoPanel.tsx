@@ -22,10 +22,10 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"]}) => {
           <div
             className={styles["item-info-tab--passive-stats-container"]}
             style={{
-              gridTemplateColumns: `repeat(${passiveData.statPanel.generalStats?.length}, 1fr)`
+              gridTemplateColumns: `repeat(${passiveData.statPanel?.generalStats?.length}, 1fr)`
             }}
           >
-            {passiveData.statPanel.generalStats?.map((stat, index) => (
+            {passiveData.statPanel?.generalStats?.map((stat, index) => (
               <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
                 <div className={styles["item-info-tab--passive-stats--general-row"]}>
                   {stat.symbol &&
@@ -53,7 +53,7 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"]}) => {
                 </div>
               </div>
             ))}
-            {passiveData.statPanel.extraStats &&
+            {passiveData.statPanel?.extraStats &&
               <div className={styles["item-info-tab--passive-stats--extra-container"]}>
   
               </div>}
@@ -101,7 +101,6 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
                 />
                 {cost}
               </span>
-
             </div>
             {displayModifiesPanel &&
               <div className={styles["basic-info--stats"]}>
@@ -116,7 +115,7 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
         </div>
         <div className={styles["item-info-tab"]}>
           <div className={styles["item-info-tab--stats"]}>
-            {itemData.stats && (Object.keys(itemData.stats)).map((stat, index) => {
+            {itemData.stats && (Object.keys(itemData.stats)).map((stat) => {
               return (
                 Object.entries(itemData.stats[stat as keyof Item["stats"]]).map(([key, value]) => {
                   const formattedKey = joinAndCapitalizeArrayOfString(splitCamelCase(key));
