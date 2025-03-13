@@ -73,6 +73,7 @@ export interface Item {
   passive: PassiveAndActive | null;
   active: PassiveAndActive | null;
   componentOf: string | null;
+  components: { name: string, tier: number }[] | null;
 }
 
 export type StatKeys = keyof Item["stats"]["weapon"] | keyof Item["stats"]["vitality"] | keyof Item["stats"]["spirit"];

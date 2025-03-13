@@ -44,8 +44,8 @@
 
 .souls-icon {
   /* transform: rotate(90deg); */
-  width: auto;
-  height: auto;
+  width: 25px;
+  height: 25px;
 }
 
 .souls-cost {

@@ -18,7 +18,8 @@
             },
             "passive": null,
             "active": null,
-            "componentOf": "Titanic Magazine"
+            "componentOf": "Titanic Magazine",
+            "components": null
           },
           {
             "name": "Close Quarters",
@@ -61,7 +62,8 @@
               }
             },
             "active": null,
-            "componentOf": null
+            "componentOf": null,
+            "components": null
           },
           {
             "name": "Headshot Booster",
@@ -94,7 +96,8 @@
               }
             },
             "active": null,
-            "componentOf": "Headhunter"
+            "componentOf": "Headhunter",
+            "components": null
           },
           {
             "name": "High-Velocity Mag",
@@ -110,7 +113,8 @@
             },
             "passive": null,
             "active": null,
-            "componentOf": "Pristine Emblem"
+            "componentOf": "Pristine Emblem",
+            "components": null
           },
           {
             "name": "Hollow Point Ward",
@@ -144,7 +148,8 @@
               }
             },
             "active": null,
-            "componentOf": null
+            "componentOf": null,
+            "components": null
           },
           {
             "name": "Monster Rounds",
@@ -161,7 +166,8 @@
             },
             "passive": null,
             "active": null,
-            "componentOf": null
+            "componentOf": null,
+            "components": null
           },
           {
             "name": "Rapid Rounds",
@@ -176,7 +182,8 @@
             },
             "passive": null,
             "active": null,
-            "componentOf": null
+            "componentOf": null,
+            "components": null
           },
           {
             "name": "Restorative Shot",
@@ -218,7 +225,8 @@
               }
             },
             "active": null,
-            "componentOf": null
+            "componentOf": null,
+            "components": null
           }
         ]
       },
@@ -235,7 +243,80 @@
         "cost": 3000,
         "innate": 14,
         "items": [
-          {}
+          {
+            "name": "Headhunter",
+            "stats": {
+              "weapon": {
+                "fireRate": 5,
+                "weaponDamage": 15
+              },
+              "vitality": {
+                "bulletShield": 150
+              }
+            },
+            "passive": {
+              "description": "Landing a <b>headshot</b> deals bonus damage, heals you for a portion of your max <b>HP</b>, and briefly grants you bonus <b>move speed</b>.",
+              "cooldown": 6,
+              "statPanel": {
+                "generalStats": [
+                  {
+                    "value": 130,
+                    "valueType": "",
+                    "symbol": "weapon",
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Bonus Head Shot Damage",
+                    "textColor": "weapon",
+                    "textType": "general",
+                    "conditional": false
+                  },
+                  {
+                    "value": 7,
+                    "valueType": "%",
+                    "symbol": "health",
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Heal Per Headshot",
+                    "textColor": "health",
+                    "textType": "general",
+                    "conditional": false
+                  },
+                  {
+                    "value": 2,
+                    "valueType": " m/s",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Move Speed",
+                    "textColor": null,
+                    "textType": "general",
+                    "conditional": true
+                  }
+                ],
+                "extraStats": [
+                  {
+                    "value": 3,
+                    "valueType": "s",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Move Speed Duration",
+                    "textColor": null,
+                    "textType": "extra",
+                    "conditional": false
+                  }
+                ]
+              }
+            },
+            "active": null,
+            "componentOf": null,
+            "components": [
+              {
+                "name": "Headshot Booster",
+                "tier": 1
+              }
+            ]
+          }
         ]
       },
       {

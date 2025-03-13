@@ -32,6 +32,17 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/recipes", async (req: Request, res: Response) => {
   console.log(process.env.DB_USER)
   try {
+    console.log("Request received");
+
+    req.on("aborted", () => {
+      console.log("Request was aborted by the client");
+    });
+    // Simulate network delay
+    await new Promise<void>((res) => {
+      setTimeout(() => {
+        res();
+      }, 2000);
+    });
     const result = await pool.query("SELECT * FROM recipes");
     res.json(result.rows);
   } catch (error) {

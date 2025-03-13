@@ -1,9 +1,70 @@
 import Image from "next/image";
 import styles from "./ItemInfoPanel.module.css"
-import { Item, StatKeys } from "@/types/items";
+import { Item } from "@/types/items";
 import { ItemCategories } from "../items.types";
 import { joinAndCapitalizeArrayOfString, splitCamelCase } from "@/app/utility/utility";
-import TestFetchData from "./TestFetchData";
+
+const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"]}) => {
+  if (passiveData) {
+    return (
+      <>
+        <div className={styles["item-info-tab--title"]}>
+          <span><i>Passive</i></span>
+          {passiveData.cooldown &&
+            <div className={styles["item-info-tab--title-cooldown"]}>
+              {passiveData.cooldown}s
+            </div>}
+        </div>
+        <div className={styles["item-info-tab"]}>
+          <div dangerouslySetInnerHTML={{
+            __html: passiveData.description,
+          }} />
+          <div
+            className={styles["item-info-tab--passive-stats-container"]}
+            style={{
+              gridTemplateColumns: `repeat(${passiveData.statPanel.generalStats?.length}, 1fr)`
+            }}
+          >
+            {passiveData.statPanel.generalStats?.map((stat, index) => (
+              <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
+                <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                  {stat.symbol &&
+                    <Image
+                      width={20}
+                      height={20}
+                      src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
+                      alt=""
+                      style={{
+                        filter: `var(--item-${stat.symbol}-symbol-color)`,
+                      }}
+                    />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
+                </div>
+                <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                  <div
+                    style={{
+                      filter: `var(--item-${stat.textColor}-symbol-color)`,
+                    }}
+                  >
+                    {stat.text}
+                  </div>
+                </div>
+                <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                  {stat.conditional && <i>Conditional</i>}
+                </div>
+              </div>
+            ))}
+            {passiveData.statPanel.extraStats &&
+              <div className={styles["item-info-tab--passive-stats--extra-container"]}>
+  
+              </div>}
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  return null;
+};
 
 interface ItemInfoPanelProps {
   itemData: Item;
@@ -15,7 +76,6 @@ interface ItemInfoPanelProps {
 
 const ItemInfoPanel = (props: ItemInfoPanelProps) => {
   const { itemData, cost, innate, category, displayModifiesPanel } = props;
-  const string = "Deal additional <b>Weapon Damage</b> when in <b>close range</b> to your target.<br />\n <i>JORMAA</i>"
 
   const formatTypes = {
     fireRate: "%",
@@ -26,7 +86,6 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
 
   return (
     <div className={styles["container"]}>
-      <TestFetchData />
       <div className={`${styles["container--general"]} ${styles["container--item"]}`}>
         <div className={styles["item-info-tab"]}>
           <div className={styles["basic-info--container"]}>
@@ -61,7 +120,7 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
               return (
                 Object.entries(itemData.stats[stat as keyof Item["stats"]]).map(([key, value]) => {
                   const formattedKey = joinAndCapitalizeArrayOfString(splitCamelCase(key));
-                  console.log()
+
                   return (
                     <div
                       key={key}
@@ -76,16 +135,7 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
             })}
           </div>
         </div>
-        {itemData.passive &&
-          <>
-            <div className={styles["item-info-tab--title"]}>
-              <span><i>Passive</i></span>
-              {itemData.passive.cooldown &&
-                <div className={styles["item-info-tab--title-cooldown"]}>
-                  {itemData.passive.cooldown}s
-                </div>}
-            </div>
-          </>}
+        <PassiveBlock passiveData={itemData.passive} />
         {itemData.active &&
           <>
             <div className={styles["item-info-tab--title"]}>
@@ -98,9 +148,7 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
         <div className={styles["item-info-tab"]}>
 
           active
-          <span dangerouslySetInnerHTML={{
-            __html: string,
-          }} />
+
         </div>
         {itemData.componentOf &&
           <div className={styles["item-info-tab"]}>

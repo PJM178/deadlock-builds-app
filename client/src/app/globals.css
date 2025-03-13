@@ -4,6 +4,10 @@
   --weapon-background-color: orange;
   --vitality-background-color: green;
   --spirit-background-color: purple;
+  /* https://codepen.io/sosuke/pen/Pjoqqp to calculate the filters based on input color */
+  --item-weapon-symbol-color: brightness(0) saturate(100%) invert(72%) sepia(76%) saturate(2353%) hue-rotate(348deg) brightness(95%) contrast(94%);
+  --item-spirit-symbol-color: brightness(0) saturate(100%) invert(57%) sepia(53%) saturate(1444%) hue-rotate(220deg) brightness(108%) contrast(102%);
+  --item-health-symbol-color: brightness(0) saturate(100%) invert(79%) sepia(26%) saturate(2748%) hue-rotate(95deg) brightness(104%) contrast(104%);
 }
 
 @media (prefers-color-scheme: dark) {
