@@ -8,7 +8,7 @@ const Header = () => {
         <Link prefetch={true} href="/">Home icon?</Link>
         <Link prefetch={true} href="/heroes">Heroes?</Link>
         <Link prefetch={true} href="/items">Items?</Link>
-        <TestFetchData />
+        {/* <TestFetchData /> */}
       </div>
     </nav>
   );

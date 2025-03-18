@@ -4,59 +4,76 @@ import { Item } from "@/types/items";
 import { ItemCategories } from "../items.types";
 import { joinAndCapitalizeArrayOfString, splitCamelCase } from "@/app/utility/utility";
 
-const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"]}) => {
+const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
   if (passiveData) {
     return (
       <>
-        <div className={styles["item-info-tab--title"]}>
-          <span><i>Passive</i></span>
-          {passiveData.cooldown &&
-            <div className={styles["item-info-tab--title-cooldown"]}>
-              {passiveData.cooldown}s
-            </div>}
-        </div>
-        <div className={styles["item-info-tab"]}>
-          <div dangerouslySetInnerHTML={{
-            __html: passiveData.description,
-          }} />
+        <div
+          className={`${styles["item-info-tab--background-wrapper--passive-title"]}`}
+        >
           <div
-            className={styles["item-info-tab--passive-stats-container"]}
-            style={{
-              gridTemplateColumns: `repeat(${passiveData.statPanel?.generalStats?.length}, 1fr)`
-            }}
+            className={styles["item-info-tab--title"]}
           >
-            {passiveData.statPanel?.generalStats?.map((stat, index) => (
-              <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  {stat.symbol &&
-                    <Image
-                      width={20}
-                      height={20}
-                      src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
-                      alt=""
-                      style={{
-                        filter: `var(--item-${stat.symbol}-symbol-color)`,
-                      }}
-                    />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
-                </div>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  <div
-                    style={{
-                      filter: `var(--item-${stat.textColor}-symbol-color)`,
-                    }}
-                  >
-                    {stat.text}
+            <span><i>Passive</i></span>
+            <div
+              className={styles["item-info-tab--title-cooldown"]}
+              style={{ visibility: passiveData.cooldown ? "visible" : "hidden" }}
+            >
+              {passiveData.cooldown}s
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${styles["item-info-tab--background-wrapper--stats"]}`}
+        >
+          <div className={styles["item-info-tab"]}>
+            <div dangerouslySetInnerHTML={{
+              __html: passiveData.description,
+            }} />
+            <div
+              className={styles["item-info-tab--passive-stats-container"]}
+              style={{
+                gridTemplateColumns: `repeat(${passiveData.statPanel?.generalStats?.length}, 1fr)`
+              }}
+            >
+              {passiveData.statPanel?.generalStats?.map((stat, index) => (
+                <div
+                  key={index}
+                  className={`${styles["item-info-tab--background-wrapper--stats-individual"]}`}
+                >
+                  <div className={styles["item-info-tab--passive-stats--general-container"]}>
+                    <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                      {stat.symbol &&
+                        <Image
+                          width={20}
+                          height={20}
+                          src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
+                          alt=""
+                          style={{
+                            filter: `var(--item-${stat.symbol}-symbol-color)`,
+                          }}
+                        />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
+                    </div>
+                    <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                      <div
+                        style={{
+                          filter: `var(--item-${stat.textColor}-symbol-color)`,
+                        }}
+                      >
+                        {stat.text}
+                      </div>
+                    </div>
+                    <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                      {stat.conditional && <i>Conditional</i>}
+                    </div>
                   </div>
                 </div>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  {stat.conditional && <i>Conditional</i>}
-                </div>
-              </div>
-            ))}
-            {passiveData.statPanel?.extraStats &&
-              <div className={styles["item-info-tab--passive-stats--extra-container"]}>
-  
-              </div>}
+              ))}
+              {passiveData.statPanel?.extraStats &&
+                <div className={styles["item-info-tab--passive-stats--extra-container"]}>
+
+                </div>}
+            </div>
           </div>
         </div>
       </>
@@ -84,10 +101,22 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
     spiritResist: "%",
   };
 
+  const extraStyles = {
+    backgroundColor: `var(--item-${category}--header)`,
+  };
+
   return (
-    <div className={styles["container"]}>
-      <div className={`${styles["container--general"]} ${styles["container--item"]}`}>
-        <div className={styles["item-info-tab"]}>
+    <div
+      className={styles["container"]}
+    >
+      <div
+        className={`${styles["container--general"]} ${styles["container--item"]}`}
+        style={extraStyles}
+      >
+        <div
+          className={`${styles["item-info-tab"]}`}
+          style={extraStyles}
+        >
           <div className={styles["basic-info--container"]}>
             <div className={styles["basic-info--name"]}>
               <span>{itemData.name}</span>
@@ -113,25 +142,33 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
               </div>}
           </div>
         </div>
-        <div className={styles["item-info-tab"]}>
-          <div className={styles["item-info-tab--stats"]}>
-            {itemData.stats && (Object.keys(itemData.stats)).map((stat) => {
-              return (
-                Object.entries(itemData.stats[stat as keyof Item["stats"]]).map(([key, value]) => {
-                  const formattedKey = joinAndCapitalizeArrayOfString(splitCamelCase(key));
+        <div
+          className={`${styles["item-info-tab--background-wrapper--stats"]}`.trim()}
+          style={extraStyles}
+        >
+          <div
+            className={`${styles["item-info-tab"]}`}
+          >
+            <div className={styles["item-info-tab--stats"]}>
+              {itemData.stats && (Object.keys(itemData.stats)).map((stat) => {
+                return (
+                  Object.entries(itemData.stats[stat as keyof Item["stats"]]).map(([key, value]) => {
+                    const formattedKey = joinAndCapitalizeArrayOfString(splitCamelCase(key));
 
-                  return (
-                    <div
-                      key={key}
-                      className={styles["item-info-tab--stats-row"]}
-                    >
-                      <div>{value > 0 ? "+" : "-"}{value}{formatTypes[key as keyof typeof formatTypes]}</div>
-                      <div>{formattedKey}</div>
-                    </div>
-                  );
-                })
-              );
-            })}
+                    return (
+                      <div
+                        key={key}
+                        className={styles["item-info-tab--stats-row"]}
+                      >
+                        <div>{value > 0 ? "+" : "-"}{value}{formatTypes[key as keyof typeof formatTypes]}</div>
+                        <div>{formattedKey}</div>
+                      </div>
+                    );
+                  })
+                );
+              })}
+
+            </div>
           </div>
         </div>
         <PassiveBlock passiveData={itemData.passive} />

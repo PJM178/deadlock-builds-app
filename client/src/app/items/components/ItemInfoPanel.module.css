@@ -34,17 +34,39 @@
   column-gap: 1rem;
   padding: 1rem;
   word-break: break-word;
+  position: relative;
 }
 
-.item-info-tab--stats {
+.item-info-tab.stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+  filter: brightness(70%);
+  z-index: 0;
+}
+
+.item-info-tab.weapon-header {
+  background-color: var(--item-weapon--header);
+}
+
+/* .item-info-tab--stats {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  z-index: 1;
+} */
+
+.item-info-tab--stats {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.25rem;
+  column-gap: 0.5rem;
+  z-index: 1;
 }
 
 .item-info-tab--stats-row {
-  display: flex;
-  gap: 0.5rem;
+  display: contents;
 }
 
 .item-info-tab--passive-stats-container {
@@ -60,6 +82,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
+  z-index: 1;
 }
 
 .item-info-tab--passive-stats--general-row {
@@ -119,13 +142,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
+  position: relative;
 }
 
 .item-info-tab--title-cooldown {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
   background-color: black;
@@ -144,4 +169,46 @@
 .basic-info--stats {
   display: inline-flex;
   flex-direction: column;
+}
+
+.item-info-tab--background-wrapper--stats {
+  position: relative;
+  background-color: inherit;
+}
+
+.item-info-tab--background-wrapper--stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+  filter: brightness(70%);
+  z-index: 0;
+}
+
+.item-info-tab--background-wrapper--stats-individual {
+  position: relative;
+  background-color: inherit;
+}
+
+.item-info-tab--background-wrapper--stats-individual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+  filter: brightness(65%);
+  z-index: 0;
+}
+
+.item-info-tab--background-wrapper--passive-title {
+  position: relative;
+  background-color: inherit;
+}
+
+.item-info-tab--background-wrapper--passive-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+  filter: brightness(60%);
+  z-index: 0;
 }
