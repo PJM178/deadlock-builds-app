@@ -9,6 +9,8 @@
   --item-spirit-symbol-color: brightness(0) saturate(100%) invert(57%) sepia(53%) saturate(1444%) hue-rotate(220deg) brightness(108%) contrast(102%);
   --item-health-symbol-color: brightness(0) saturate(100%) invert(79%) sepia(26%) saturate(2748%) hue-rotate(95deg) brightness(104%) contrast(104%);
   --item-weapon--header: #C97A03;
+  --item-vitality--header: rgb(38, 206, 38);
+  --item-spirit--header: rgb(197, 39, 197);
   --item-weapon--components: brightness(0) saturate(100%);
   --item-weapon--background: brightness(0) saturate(100%);
   --item-weapon--passive: brightness(0) saturate(100%);

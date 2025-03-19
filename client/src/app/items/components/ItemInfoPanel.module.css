@@ -6,11 +6,23 @@
   --icon-size: 35px;
 }
 
+.container.weapon {
+  background-color: var(--item-weapon--header);
+}
+
+.container.vitality {
+  background-color: var(--item-vitality--header);
+}
+
+.container.spirit {
+  background-color: var(--item-spirit--header);
+}
+
 .container--general {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  background-color: orangered;
+  /* background-color: orangered; */
   overflow: hidden;
   border-radius: 8px;
 }
@@ -37,13 +49,8 @@
   position: relative;
 }
 
-.item-info-tab.stats::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: inherit;
-  filter: brightness(70%);
-  z-index: 0;
+.item-info-tab.stats {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .item-info-tab.weapon-header {
@@ -144,6 +151,7 @@
   align-items: center;
   z-index: 1;
   position: relative;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .item-info-tab--title-cooldown {
@@ -169,46 +177,4 @@
 .basic-info--stats {
   display: inline-flex;
   flex-direction: column;
-}
-
-.item-info-tab--background-wrapper--stats {
-  position: relative;
-  background-color: inherit;
-}
-
-.item-info-tab--background-wrapper--stats::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: inherit;
-  filter: brightness(70%);
-  z-index: 0;
-}
-
-.item-info-tab--background-wrapper--stats-individual {
-  position: relative;
-  background-color: inherit;
-}
-
-.item-info-tab--background-wrapper--stats-individual::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: inherit;
-  filter: brightness(65%);
-  z-index: 0;
-}
-
-.item-info-tab--background-wrapper--passive-title {
-  position: relative;
-  background-color: inherit;
-}
-
-.item-info-tab--background-wrapper--passive-title::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: inherit;
-  filter: brightness(60%);
-  z-index: 0;
 }
