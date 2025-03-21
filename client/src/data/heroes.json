@@ -44,6 +44,9 @@
         "maxChargesIncrease": 0,
         "chargeCooldown": 0,
         "spiritPower": 0
+      },
+      "other": {
+        "slideDistance": 0
       }
     },
     "abilities": {

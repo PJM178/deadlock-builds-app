@@ -5,6 +5,33 @@ import { ItemCategories } from "../items.types";
 import { joinAndCapitalizeArrayOfString, splitCamelCase } from "@/app/utility/utility";
 
 const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
+  console.log(passiveData)
+  const handleStatsGridColumns = (extraStat?: boolean): React.CSSProperties => {
+    if (passiveData?.statPanel.generalStats?.length === 1) {
+      if (!passiveData.statPanel.extraStats) {
+        return { gridTemplateColumns: "repeat(1, 1fr)" };
+      }
+
+      if (extraStat) {
+        return { gridColumn: "span 2" };
+      }
+
+      return { gridTemplateColumns: "repeat(3, 1fr)" };
+    }
+
+    if (passiveData?.statPanel.generalStats?.length === 2) {
+      if (extraStat) {
+        return { gridColumn: "1 / -1" };
+      }
+
+      return { gridTemplateColumns: "repeat(2, 1fr)" };
+    }
+
+    return { gridTemplateColumns: "repeat(1, 1fr)" };
+  };
+
+
+
   if (passiveData) {
     return (
       <>
@@ -19,17 +46,17 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
             {passiveData.cooldown}s
           </div>
         </div>
-        <div className={styles["item-info-tab"]}>
+        <div className={`${styles["item-info-tab"]} ${styles["stats"]}`.trim()}>
           <div dangerouslySetInnerHTML={{
             __html: passiveData.description,
           }} />
-          <div
+          {passiveData.statPanel?.generalStats && <div
             className={styles["item-info-tab--passive-stats-container"]}
-            style={{
-              gridTemplateColumns: `repeat(${passiveData.statPanel?.generalStats?.length}, 1fr)`
-            }}
+            style={
+              handleStatsGridColumns()
+            }
           >
-            {passiveData.statPanel?.generalStats?.map((stat, index) => (
+            {passiveData.statPanel.generalStats.map((stat, index) => (
               <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
                 <div className={styles["item-info-tab--passive-stats--general-row"]}>
                   {stat.symbol &&
@@ -57,12 +84,111 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
                 </div>
               </div>
             ))}
-            {passiveData.statPanel?.extraStats &&
-              <div className={styles["item-info-tab--passive-stats--extra-container"]}>
+            {passiveData.statPanel.extraStats &&
+              <div
+                className={styles["item-info-tab--passive-stats--extra-container"]}
+                style={handleStatsGridColumns(true)}
+              >
 
               </div>}
+          </div>}
+        </div >
+      </>
+    );
+  }
+
+  return null;
+};
+
+const ActiveBlock = ({ activeData }: { activeData: Item["active"] }) => {
+  console.log(activeData)
+  const handleStatsGridColumns = (extraStat?: boolean): React.CSSProperties => {
+    if (activeData?.statPanel.generalStats?.length === 1) {
+      if (!activeData.statPanel.extraStats) {
+        return { gridTemplateColumns: "repeat(1, 1fr)" };
+      }
+
+      if (extraStat) {
+        return { gridColumn: "span 2" };
+      }
+
+      return { gridTemplateColumns: "repeat(3, 1fr)" };
+    }
+
+    if (activeData?.statPanel.generalStats?.length === 2) {
+      if (extraStat) {
+        return { gridColumn: "1 / -1" };
+      }
+
+      return { gridTemplateColumns: "repeat(2, 1fr)" };
+    }
+
+    return { gridTemplateColumns: "repeat(1, 1fr)" };
+  };
+
+
+
+  if (activeData) {
+    return (
+      <>
+        <div
+          className={styles["item-info-tab--title"]}
+        >
+          <span><b>Active</b></span>
+          <div
+            className={styles["item-info-tab--title-cooldown"]}
+            style={{ visibility: activeData.cooldown ? "visible" : "hidden" }}
+          >
+            {activeData.cooldown}s
           </div>
         </div>
+        <div className={`${styles["item-info-tab"]} ${styles["stats"]}`.trim()}>
+          <div dangerouslySetInnerHTML={{
+            __html: activeData.description,
+          }} />
+          {activeData.statPanel?.generalStats && <div
+            className={styles["item-info-tab--passive-stats-container"]}
+            style={
+              handleStatsGridColumns()
+            }
+          >
+            {activeData.statPanel.generalStats.map((stat, index) => (
+              <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
+                <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                  {stat.symbol &&
+                    <Image
+                      width={20}
+                      height={20}
+                      src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
+                      alt=""
+                      style={{
+                        filter: `var(--item-${stat.symbol}-symbol-color)`,
+                      }}
+                    />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
+                </div>
+                <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                  <div
+                    style={{
+                      filter: `var(--item-${stat.textColor}-symbol-color)`,
+                    }}
+                  >
+                    {stat.text}
+                  </div>
+                </div>
+                <div className={styles["item-info-tab--passive-stats--general-row"]}>
+                  {stat.conditional && <i>Conditional</i>}
+                </div>
+              </div>
+            ))}
+            {activeData.statPanel.extraStats &&
+              <div
+                className={styles["item-info-tab--passive-stats--extra-container"]}
+                style={handleStatsGridColumns(true)}
+              >
+
+              </div>}
+          </div>}
+        </div >
       </>
     );
   }
@@ -86,6 +212,7 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
     weaponDamage: "%",
     bulletResist: "%",
     spiritResist: "%",
+    slideDistance: "%",
   };
 
   return (
@@ -148,28 +275,17 @@ const ItemInfoPanel = (props: ItemInfoPanelProps) => {
           </div>
         </div>
         <PassiveBlock passiveData={itemData.passive} />
-        {itemData.active &&
-          <>
-            <div className={styles["item-info-tab--title"]}>
-              <span><b>Active</b></span>
-            </div>
-            <div className={styles["item-info-tab"]}>
-
-            </div>
-          </>}
-        <div className={styles["item-info-tab"]}>
-
-          active
-
-        </div>
+        <ActiveBlock activeData={itemData.active} />
         {itemData.componentOf &&
-          <div className={styles["item-info-tab"]}>
+          <div className={`${styles["item-info-tab"]} ${styles["component"]}`}>
             <div className={styles["item-info-tab--component-container"]}>
               <div>IS COMPONENT OF:</div>
               <div className={styles["item-info-tab--component-icon--container"]}>
-                <div className={styles["item-info-tab--component-icon--icon-container"]}>
+                <div
+                  className={`${styles["item-info-tab--component-icon--icon-container"]} ${styles[category ?? "weapon"]}`.trim()}
+                >
                   <Image
-                    className={styles["item-info-tab--component-icon--icon"]}
+                    className={`${styles["item-info-tab--component-icon--icon"]} ${styles[category ?? "weapon"]}`.trim()}
                     src={`/items/${category}/${itemData.componentOf.split(" ").join("_")}.webp`}
                     alt={itemData.componentOf}
                     width={20}

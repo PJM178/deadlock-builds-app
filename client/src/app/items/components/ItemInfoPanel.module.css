@@ -4,6 +4,8 @@
   gap: 20px;
   --main-width: 400px;
   --icon-size: 35px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .container.weapon {
@@ -23,8 +25,6 @@
   flex-direction: column;
   width: fit-content;
   /* background-color: orangered; */
-  overflow: hidden;
-  border-radius: 8px;
 }
 
 .container--item {
@@ -49,8 +49,12 @@
   position: relative;
 }
 
+.item-info-tab.component {
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
 .item-info-tab.stats {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.20);
 }
 
 .item-info-tab.weapon-header {
@@ -79,6 +83,7 @@
 .item-info-tab--passive-stats-container {
   display: grid;
   gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .item-info-tab--passive-stats--general-container {
@@ -90,6 +95,9 @@
   text-align: center;
   width: 100%;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 0.75rem;
 }
 
 .item-info-tab--passive-stats--general-row {
@@ -110,12 +118,14 @@
 .item-info-tab--component-container {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .item-info-tab--component-icon--container {
   display: flex;
   flex-direction: row;
-  border: rgba(0,0,0, 0.5) solid 2px;
+  border: transparent solid 2px;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: var(--icon-size);
   align-items: center;
   width: fit-content;
@@ -127,13 +137,24 @@
   position: relative;
 }
 
+.item-info-tab--component-icon--icon.weapon {
+  filter: var(--item-weapon--componentof-icon-color);
+}
+
+.item-info-tab--component-icon--icon.vitality {
+  filter: var(--item-vitality--componentof-icon-color);
+}
+
+.item-info-tab--component-icon--icon.spirit {
+  filter: var(--item-spirit--componentof-icon-color);
+}
+
 .item-info-tab--component-icon--name {
   margin: 0  1rem 0 calc(var(--icon-size) - 5px + 0.5rem);
 }
 
 .item-info-tab--component-icon--icon-container {
   border-radius: 50%;
-  background-color: black;
   z-index: 2;
   width: var(--icon-size);
   height: var(--icon-size);
@@ -144,6 +165,18 @@
   position: absolute;
 }
 
+.item-info-tab--component-icon--icon-container.weapon {
+  background-color: var(--item-weapon--componentof-icon-background);
+}
+
+.item-info-tab--component-icon--icon-container.vitality {
+  background-color: var(--item-vitality--componentof-icon-background);
+}
+
+.item-info-tab--component-icon--icon-container.spirit {
+  background-color: var(--item-spirit--componentof-icon-background);
+}
+
 .item-info-tab--title {
   padding-left: 1rem;
   display: flex;
@@ -151,7 +184,7 @@
   align-items: center;
   z-index: 1;
   position: relative;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .item-info-tab--title-cooldown {

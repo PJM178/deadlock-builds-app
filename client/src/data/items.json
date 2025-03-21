@@ -62,7 +62,7 @@
               }
             },
             "active": null,
-            "componentOf": null,
+            "componentOf": "Point Blank",
             "components": null
           },
           {
@@ -235,7 +235,70 @@
         "cost": 1250,
         "innate": 10,
         "items": [
-          {}
+          {
+            "name": "Fleetfoot",
+            "stats": {
+              "vitality": {
+                "bonusHealth": 90
+              },
+              "other": {
+                "slideDistance": 25
+              }
+            },
+            "passive": {
+              "description": "Removes the <b>Move Speed</b> penalty while shooting.",
+              "cooldown": null,
+              "statPanel": {
+                "generalStats": null,
+                "extraStats": null
+              }
+            },
+            "active": {
+              "description": "Gain bonus <b>Move Speed</b> and <b>Ammo</b>.",
+              "cooldown": 20,
+              "statPanel": {
+                "generalStats": [
+                  {
+                    "value": 3,
+                    "valueType": "m/s",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Move Speed",
+                    "textColor": null,
+                    "textType": "general",
+                    "conditional": true
+                  },
+                  {
+                    "value": 30,
+                    "valueType": "%",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Temporary Ammo",
+                    "textColor": null,
+                    "textType": "general",
+                    "conditional": true
+                  }
+                ],
+                "extraStats": [
+                  {
+                    "value": 4,
+                    "valueType": "s",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Duration",
+                    "textColor": null,
+                    "textType": "extra",
+                    "conditional": true
+                  }
+                ]
+              }
+            },
+            "componentOf": null,
+            "components": null
+          }
         ]
       },
       {
@@ -295,12 +358,12 @@
                 ],
                 "extraStats": [
                   {
-                    "value": 3,
+                    "value": 4,
                     "valueType": "s",
                     "symbol": null,
                     "scaling": 0,
                     "scalingType": null,
-                    "text": "Move Speed Duration",
+                    "text": "Duration",
                     "textColor": null,
                     "textType": "extra",
                     "conditional": false
