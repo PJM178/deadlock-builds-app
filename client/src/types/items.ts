@@ -10,7 +10,7 @@ interface PassiveActiveStat {
   conditional: boolean;
 }
 
-interface PassiveAndActive {
+export interface PassiveAndActive {
   description: string;
   cooldown: number | null;
   statPanel: {

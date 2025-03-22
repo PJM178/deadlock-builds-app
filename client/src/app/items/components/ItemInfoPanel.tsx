@@ -1,37 +1,10 @@
 import Image from "next/image";
 import styles from "./ItemInfoPanel.module.css"
-import { Item } from "@/types/items";
+import { Item, PassiveAndActive } from "@/types/items";
 import { ItemCategories } from "../items.types";
 import { joinAndCapitalizeArrayOfString, splitCamelCase } from "@/app/utility/utility";
 
 const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
-  console.log(passiveData)
-  const handleStatsGridColumns = (extraStat?: boolean): React.CSSProperties => {
-    if (passiveData?.statPanel.generalStats?.length === 1) {
-      if (!passiveData.statPanel.extraStats) {
-        return { gridTemplateColumns: "repeat(1, 1fr)" };
-      }
-
-      if (extraStat) {
-        return { gridColumn: "span 2" };
-      }
-
-      return { gridTemplateColumns: "repeat(3, 1fr)" };
-    }
-
-    if (passiveData?.statPanel.generalStats?.length === 2) {
-      if (extraStat) {
-        return { gridColumn: "1 / -1" };
-      }
-
-      return { gridTemplateColumns: "repeat(2, 1fr)" };
-    }
-
-    return { gridTemplateColumns: "repeat(1, 1fr)" };
-  };
-
-
-
   if (passiveData) {
     return (
       <>
@@ -46,53 +19,7 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
             {passiveData.cooldown}s
           </div>
         </div>
-        <div className={`${styles["item-info-tab"]} ${styles["stats"]}`.trim()}>
-          <div dangerouslySetInnerHTML={{
-            __html: passiveData.description,
-          }} />
-          {passiveData.statPanel?.generalStats && <div
-            className={styles["item-info-tab--passive-stats-container"]}
-            style={
-              handleStatsGridColumns()
-            }
-          >
-            {passiveData.statPanel.generalStats.map((stat, index) => (
-              <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  {stat.symbol &&
-                    <Image
-                      width={20}
-                      height={20}
-                      src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
-                      alt=""
-                      style={{
-                        filter: `var(--item-${stat.symbol}-symbol-color)`,
-                      }}
-                    />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
-                </div>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  <div
-                    style={{
-                      filter: `var(--item-${stat.textColor}-symbol-color)`,
-                    }}
-                  >
-                    {stat.text}
-                  </div>
-                </div>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  {stat.conditional && <i>Conditional</i>}
-                </div>
-              </div>
-            ))}
-            {passiveData.statPanel.extraStats &&
-              <div
-                className={styles["item-info-tab--passive-stats--extra-container"]}
-                style={handleStatsGridColumns(true)}
-              >
-
-              </div>}
-          </div>}
-        </div >
+        <StatPanel data={passiveData} />
       </>
     );
   }
@@ -101,33 +28,6 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
 };
 
 const ActiveBlock = ({ activeData }: { activeData: Item["active"] }) => {
-  console.log(activeData)
-  const handleStatsGridColumns = (extraStat?: boolean): React.CSSProperties => {
-    if (activeData?.statPanel.generalStats?.length === 1) {
-      if (!activeData.statPanel.extraStats) {
-        return { gridTemplateColumns: "repeat(1, 1fr)" };
-      }
-
-      if (extraStat) {
-        return { gridColumn: "span 2" };
-      }
-
-      return { gridTemplateColumns: "repeat(3, 1fr)" };
-    }
-
-    if (activeData?.statPanel.generalStats?.length === 2) {
-      if (extraStat) {
-        return { gridColumn: "1 / -1" };
-      }
-
-      return { gridTemplateColumns: "repeat(2, 1fr)" };
-    }
-
-    return { gridTemplateColumns: "repeat(1, 1fr)" };
-  };
-
-
-
   if (activeData) {
     return (
       <>
@@ -142,58 +42,88 @@ const ActiveBlock = ({ activeData }: { activeData: Item["active"] }) => {
             {activeData.cooldown}s
           </div>
         </div>
-        <div className={`${styles["item-info-tab"]} ${styles["stats"]}`.trim()}>
-          <div dangerouslySetInnerHTML={{
-            __html: activeData.description,
-          }} />
-          {activeData.statPanel?.generalStats && <div
-            className={styles["item-info-tab--passive-stats-container"]}
-            style={
-              handleStatsGridColumns()
-            }
-          >
-            {activeData.statPanel.generalStats.map((stat, index) => (
-              <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  {stat.symbol &&
-                    <Image
-                      width={20}
-                      height={20}
-                      src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
-                      alt=""
-                      style={{
-                        filter: `var(--item-${stat.symbol}-symbol-color)`,
-                      }}
-                    />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
-                </div>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  <div
-                    style={{
-                      filter: `var(--item-${stat.textColor}-symbol-color)`,
-                    }}
-                  >
-                    {stat.text}
-                  </div>
-                </div>
-                <div className={styles["item-info-tab--passive-stats--general-row"]}>
-                  {stat.conditional && <i>Conditional</i>}
-                </div>
-              </div>
-            ))}
-            {activeData.statPanel.extraStats &&
-              <div
-                className={styles["item-info-tab--passive-stats--extra-container"]}
-                style={handleStatsGridColumns(true)}
-              >
-
-              </div>}
-          </div>}
-        </div >
+        <StatPanel data={activeData} />
       </>
     );
   }
 
   return null;
+};
+
+const StatPanel = (props: { data: PassiveAndActive }) => {
+  const { data } = props;
+
+  const handleStatsGridColumns = (extraStat?: boolean): React.CSSProperties => {
+    if (data?.statPanel.generalStats?.length === 1) {
+      if (!data.statPanel.extraStats) {
+        return { gridTemplateColumns: "repeat(1, 1fr)" };
+      }
+
+      if (extraStat) {
+        return { gridColumn: "span 2" };
+      }
+
+      return { gridTemplateColumns: "repeat(3, 1fr)" };
+    }
+
+    if (data?.statPanel.generalStats?.length === 2) {
+      if (extraStat) {
+        return { gridColumn: "1 / -1" };
+      }
+
+      return { gridTemplateColumns: "repeat(2, 1fr)" };
+    }
+
+    return { gridTemplateColumns: "repeat(1, 1fr)" };
+  };
+
+  return (
+    <div className={`${styles["item-info-tab"]} ${styles["stats"]}`.trim()}>
+      <div dangerouslySetInnerHTML={{
+        __html: data.description,
+      }} />
+      {data.statPanel?.generalStats && <div
+        className={styles["item-info-tab--passive-stats-container"]}
+        style={handleStatsGridColumns()}
+      >
+        {data.statPanel.generalStats.map((stat, index) => (
+          <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
+            <div className={styles["item-info-tab--passive-stats--general-row"]}>
+              {stat.symbol &&
+                <Image
+                  width={20}
+                  height={20}
+                  src={`/miscellaneous/item_symbol_${stat.symbol}.${stat.symbol !== "health" ? "svg" : "webp"}`}
+                  alt=""
+                  style={{
+                    filter: `var(--item-${stat.symbol}-symbol-color)`,
+                  }}
+                />}{stat.valueType !== "%" && "+"}{stat.value}{stat.valueType}
+            </div>
+            <div className={styles["item-info-tab--passive-stats--general-row"]}>
+              <div
+                style={{
+                  filter: `var(--item-${stat.textColor}-symbol-color)`,
+                }}
+              >
+                {stat.text}
+              </div>
+            </div>
+            <div className={styles["item-info-tab--passive-stats--general-row"]}>
+              {stat.conditional && <i>Conditional</i>}
+            </div>
+          </div>
+        ))}
+        {data.statPanel.extraStats &&
+          <div
+            className={styles["item-info-tab--passive-stats--extra-container"]}
+            style={handleStatsGridColumns(true)}
+          >
+
+          </div>}
+      </div>}
+    </div >
+  );
 };
 
 interface ItemInfoPanelProps {
