@@ -16,7 +16,15 @@ const PassiveBlock = ({ passiveData }: { passiveData: Item["passive"] }) => {
             className={styles["item-info-tab--title-cooldown"]}
             style={{ visibility: passiveData.cooldown ? "visible" : "hidden" }}
           >
-            {passiveData.cooldown}s
+            <span className={styles["item-info-tab--title-cooldown-icon-container"]}>
+              <Image
+                width={25}
+                height={25}
+                src={`/miscellaneous/item_symbol_cooldown.webp`}
+                alt=""
+              />
+            </span>
+            <span>{passiveData.cooldown}s</span>
           </div>
         </div>
         <StatPanel data={passiveData} />
@@ -32,14 +40,22 @@ const ActiveBlock = ({ activeData }: { activeData: Item["active"] }) => {
     return (
       <>
         <div
-          className={styles["item-info-tab--title"]}
+          className={`${styles["item-info-tab--title"]} ${styles["active"]}`.trim()}
         >
           <span><b>Active</b></span>
           <div
             className={styles["item-info-tab--title-cooldown"]}
             style={{ visibility: activeData.cooldown ? "visible" : "hidden" }}
           >
-            {activeData.cooldown}s
+            <span>
+              <Image
+                width={20}
+                height={20}
+                src={`/miscellaneous/item_symbol_cooldown.webp`}
+                alt=""
+              />
+            </span>
+            <span>{activeData.cooldown}s</span>
           </div>
         </div>
         <StatPanel data={activeData} />
@@ -72,9 +88,13 @@ const StatPanel = (props: { data: PassiveAndActive }) => {
       }
 
       return { gridTemplateColumns: "repeat(2, 1fr)" };
-    }
+    } else {
+      if (extraStat) {
+        return { gridColumn: "1 / -1" };
+      }
 
-    return { gridTemplateColumns: "repeat(1, 1fr)" };
+      return { gridTemplateColumns: "repeat(3, 1fr)" };
+    }
   };
 
   return (
@@ -87,7 +107,10 @@ const StatPanel = (props: { data: PassiveAndActive }) => {
         style={handleStatsGridColumns()}
       >
         {data.statPanel.generalStats.map((stat, index) => (
-          <div key={index} className={styles["item-info-tab--passive-stats--general-container"]}>
+          <div
+            key={index}
+            className={styles["item-info-tab--passive-stats--general-container"]}
+          >
             <div className={styles["item-info-tab--passive-stats--general-row"]}>
               {stat.symbol &&
                 <Image
@@ -119,7 +142,15 @@ const StatPanel = (props: { data: PassiveAndActive }) => {
             className={styles["item-info-tab--passive-stats--extra-container"]}
             style={handleStatsGridColumns(true)}
           >
-
+            {data.statPanel.extraStats.map((stat, index) => (
+              <div
+                key={index}
+                className={styles["item-info-tab--passive-stats--extra-row"]}
+              >
+                <div>{stat.value}{stat.valueType}</div>
+                <div>{stat.text}</div>
+              </div>
+            ))}
           </div>}
       </div>}
     </div >

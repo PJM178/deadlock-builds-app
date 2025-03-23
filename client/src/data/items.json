@@ -379,6 +379,82 @@
                 "tier": 1
               }
             ]
+          },
+          {
+            "name": "Tesla Bullets",
+            "stats": {
+              "weapon": {
+                "fireRate": 14
+              }
+            },
+            "passive": {
+              "description": "Your bullets have a chance to <b>shock</b> your target. The <b>shock</b> will jump to a nearby enemy.",
+              "cooldown": 0.35,
+              "statPanel": {
+                "generalStats": [
+                  {
+                    "value": 30,
+                    "valueType": "",
+                    "symbol": "spirit",
+                    "scaling": 0.16,
+                    "scalingType": "spirit",
+                    "text": "Shock Damage",
+                    "textColor": "spirit",
+                    "textType": "general",
+                    "conditional": false
+                  }
+                ],
+                "extraStats": [
+                  {
+                    "value": 60,
+                    "valueType": "",
+                    "symbol": null,
+                    "scaling": 0.2,
+                    "scalingType": "spirit",
+                    "text": "Damage on Jump",
+                    "textColor": null,
+                    "textType": "extra",
+                    "conditional": false
+                  },
+                  {
+                    "value": 25,
+                    "valueType": "%",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Proc Chance",
+                    "textColor": null,
+                    "textType": "extra",
+                    "conditional": false
+                  },
+                  {
+                    "value": 8,
+                    "valueType": "m",
+                    "symbol": null,
+                    "scaling": 1,
+                    "scalingType": "range",
+                    "text": "Jump Radius",
+                    "textColor": null,
+                    "textType": "extra",
+                    "conditional": false
+                  },
+                  {
+                    "value": 2,
+                    "valueType": "",
+                    "symbol": null,
+                    "scaling": 0,
+                    "scalingType": null,
+                    "text": "Max Jumps",
+                    "textColor": null,
+                    "textType": "extra",
+                    "conditional": false
+                  }
+                ]
+              }
+            },
+            "active": null,
+            "componentOf": null,
+            "components": null
           }
         ]
       },

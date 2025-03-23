@@ -82,8 +82,47 @@
 
 .item-info-tab--passive-stats-container {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-top: 0.75rem;
+}
+
+/* Apply only if the container has exactly 4 children */
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(4)) > div:nth-child(1) {
+  border-radius: 4px 0 0 0px;
+}
+
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(4)) > div:nth-child(2) {
+  border-radius: 0;
+}
+
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(4)) > div:nth-child(3) {
+  border-radius: 0 4px 0 0;
+}
+
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(4)) > div:nth-child(4) {
+  border-radius: 0 0 4px 4px;
+}
+
+/* Apply only if the container has exactly 3 children */
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(3)) > div:nth-child(1) {
+  border-radius: 4px 0 0 0px;
+}
+
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(3)) > div:nth-child(2) {
+  border-radius: 0 4px 0px 0;
+}
+
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(3)) > div:nth-child(3) {
+  border-radius: 0 0px 4px 4px;
+}
+
+/* Apply only if the container has exactly 2 children */
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(2)) > div:nth-child(1) {
+  border-radius: 4px 0 0 4px;
+}
+
+.item-info-tab--passive-stats-container:has(> :nth-last-child(1):nth-child(2)) > div:nth-child(2) {
+  border-radius: 0 4px 4px 0;
 }
 
 .item-info-tab--passive-stats--general-container {
@@ -108,6 +147,10 @@
   display: flex;
   grid-column: 1 / -1;
   gap: 0.5rem;
+  flex-direction: column;
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .item-info-tab--passive-stats--extra-row {
@@ -187,14 +230,32 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.item-info-tab--title.active {
+  padding-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .item-info-tab--title-cooldown {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   display: flex;
   justify-content: space-between;
   background-color: black;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.item-info-tab--title-cooldown-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .basic-info--name {
