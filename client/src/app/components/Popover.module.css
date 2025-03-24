@@ -1,0 +1,4 @@
+.container {
+  pointer-events: none;
+  width: fit-content;
+}
