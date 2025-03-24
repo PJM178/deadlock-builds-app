@@ -1,3 +1,5 @@
+import styles from "./layout.module.css"
+
 interface ItemsLayoutProps {
   children: React.ReactNode;
 }
@@ -6,10 +8,9 @@ const ItemsLayout = async (props: ItemsLayoutProps) => {
   const { children } = props;
 
   return (
-    <section>
-      <div>this is layout</div>
+    <main className={styles["main"]}>
       {children}
-    </section>
+    </main>
   );
 };
 

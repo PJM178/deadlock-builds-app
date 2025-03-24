@@ -17,7 +17,7 @@ interface PopoverProps {
 const Popover = (props: PopoverProps) => {
   const { isOpen, anchorEl, children, offset, position } = props;
   const popoverRef = useRef<HTMLDivElement>(null);
-  const [popoverStyles, setPopoverStyles] = useState<CSSProperties | undefined>(undefined);
+  const [popoverStyles, setPopoverStyles] = useState<CSSProperties | undefined>({ position: "absolute", top: "-9999px", left: "-9999px", visibility: "hidden" });
 
   useEffect(() => {
     if (anchorEl && popoverRef.current && isOpen) {
@@ -42,6 +42,7 @@ const Popover = (props: PopoverProps) => {
         top: `${top}px`,
         left: `${left}px`,
         zIndex: 1000,
+        visibility: "visible",
       });
     }
   }, [anchorEl, offset, isOpen, position]);
@@ -55,7 +56,7 @@ const Popover = (props: PopoverProps) => {
           data-testid="popover"
           ref={popoverRef}
           className={styles["container"]}
-          style={{ ...(popoverStyles || { visibility: "hidden" }) }}
+          style={{ ...(popoverStyles)}}
         >
           {children}
         </div>,

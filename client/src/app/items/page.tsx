@@ -68,7 +68,7 @@ const ItemsHome = async ({ searchParams }: ItemProps) => {
   }
 
   return (
-    <div>
+    <section>
       <TabsContainer>
         <Tab name="Weapon" icon={handleTabsIcon("weapon")} searchParam={(itemCategory && isSearchParamItem) ? itemCategory : "weapon"} />
         <Tab name="Vitality" icon={handleTabsIcon("vitality")} searchParam={itemCategory} />
@@ -145,7 +145,7 @@ const ItemsHome = async ({ searchParams }: ItemProps) => {
           return null;
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

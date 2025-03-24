@@ -66,7 +66,7 @@ const ItemCard = (props: ItemCardProps) => {
       >
         <ItemInfoPanel itemData={itemData} cost={cost} innate={innate} category={category} />
       </Popover>
-      <ItemInfoPanel itemData={itemData} cost={cost} innate={innate} category={category} />
+      {/* <ItemInfoPanel itemData={itemData} cost={cost} innate={innate} category={category} /> */}
     </>
   );
 };
